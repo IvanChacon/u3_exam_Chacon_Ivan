@@ -1,0 +1,796 @@
+#VRML_SIM R2019a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.03614461775702598 0.999336183590833 0.0045561796834385805 0.9314951101653832
+  position 1.5915843340223814 0.2907257847341264 1.727297489306213
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+}
+DEF OMNI_WHEELS Robot {
+  translation 0.0644970375616198 0.056882970762155524 0.6716954090072921
+  rotation -0.0005842035301071094 0.9999985121643977 -0.0016230758535503112 2.5285478487549975
+  children [
+    DEF SOLID1 Solid {
+      children [
+        DEF WHEEL1 HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor 0 0 0.1
+          }
+          device [
+            RotationalMotor {
+              name "motor1"
+              maxVelocity 52.35
+              maxTorque 0.5935
+            }
+            PositionSensor {
+              name "encoder_1"
+              resolution 0.00523597
+            }
+          ]
+          endPoint Solid {
+            translation 0 0 0.1
+            rotation 0 0 1 0
+            children [
+              DEF sr1 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 146.89743771377314
+                  anchor 0 0.05 0.02
+                }
+                endPoint Solid {
+                  translation 0 0.05 0.02
+                  rotation -1 0 0 3.8990096585369316
+                  children [
+                    DEF r1 Transform {
+                      rotation 0 0 1 1.5708
+                      children [
+                        DEF SMALL_WHEEL_SHAPE Shape {
+                          appearance PBRAppearance {
+                            baseColor 1 0.752941 0.796078
+                            roughness 1
+                            metalness 0
+                          }
+                          geometry Cylinder {
+                            height 0.02
+                            radius 0.01
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                  name "sr1"
+                  boundingObject USE r1
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr2 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 25.77095491233017
+                  axis 0.707107 0.707107 0
+                  anchor -0.03535 0.03535 0.02
+                }
+                endPoint Solid {
+                  translation -0.03535 0.03535 0.02
+                  rotation 0.7071067811865475 0.7071067811865475 0 0.6382136836118226
+                  children [
+                    DEF r2 Transform {
+                      rotation 0 0 1 2.27
+                      children [
+                        USE SMALL_WHEEL_SHAPE
+                      ]
+                    }
+                  ]
+                  name "sr2"
+                  boundingObject USE r2
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr3 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -414.3396555595513
+                  anchor 0 -0.05 0.02
+                }
+                endPoint Solid {
+                  translation 0 -0.05 0.02
+                  rotation 1 0 0 0.3505747143013894
+                  children [
+                    DEF r3 Transform {
+                      rotation 0 0 1 1.5708
+                      children [
+                        USE SMALL_WHEEL_SHAPE
+                      ]
+                    }
+                  ]
+                  name "sr3"
+                  boundingObject USE r3
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr4 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -243.4089881600258
+                  axis 0.707107 0.707107 0
+                  anchor 0.03535 -0.03535 0.02
+                }
+                endPoint Solid {
+                  translation 0.03535 -0.03535 0.02
+                  rotation -0.7071067811865476 -0.7071067811865476 0 4.647946487201528
+                  children [
+                    DEF r4 Transform {
+                      rotation 0 0 1 2.27
+                      children [
+                        USE SMALL_WHEEL_SHAPE
+                      ]
+                    }
+                  ]
+                  name "sr4"
+                  boundingObject USE r4
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr5 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 4.752322761853961
+                  axis 0 1 0
+                  anchor -0.05 0 0.02
+                }
+                endPoint Solid {
+                  translation -0.05 0 0.02
+                  rotation 0 1 0 4.752322761853961
+                  children [
+                    DEF r5 Transform {
+                      children [
+                        USE SMALL_WHEEL_SHAPE
+                      ]
+                    }
+                  ]
+                  name "sr5"
+                  boundingObject USE r5
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr6 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -199.51114123764555
+                  axis 0 1 0
+                  anchor 0.05 0 0.02
+                }
+                endPoint Solid {
+                  translation 0.05 0 0.02
+                  rotation 0 1 0 1.550788592101221
+                  children [
+                    DEF r6 Transform {
+                      children [
+                        USE SMALL_WHEEL_SHAPE
+                      ]
+                    }
+                  ]
+                  name "sr6"
+                  boundingObject USE r6
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr7 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 496.5269351762709
+                  axis -0.707107 0.707107 0
+                  anchor -0.03535 -0.03535 0.02
+                }
+                endPoint Solid {
+                  translation -0.03535 -0.03535 0.02
+                  rotation 0.7071067811865476 -0.7071067811865476 0 6.127889398096007
+                  children [
+                    DEF r7 Transform {
+                      rotation 0 0 1 0.76
+                      children [
+                        USE SMALL_WHEEL_SHAPE
+                      ]
+                    }
+                  ]
+                  name "sr7"
+                  boundingObject USE r7
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr8 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -86.79453111978883
+                  axis -0.707107 0.707107 0
+                  anchor 0.03535 0.03535 0.02
+                }
+                endPoint Solid {
+                  translation 0.03535 0.03535 0.02
+                  rotation -0.7071067811865475 0.7071067811865475 0 1.170063180725382
+                  children [
+                    DEF r8 Transform {
+                      rotation 0 0 1 0.76
+                      children [
+                        USE SMALL_WHEEL_SHAPE
+                      ]
+                    }
+                  ]
+                  name "sr8"
+                  boundingObject USE r8
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF WHEEL_TRANS Transform {
+                translation 0 0 0.02
+                rotation 1 0 0 1.5708
+                children [
+                  DEF WHEEL_SHAPE Shape {
+                    appearance PBRAppearance {
+                      baseColor 0.678431 0.847059 0.901961
+                      roughness 1
+                      metalness 0
+                    }
+                    geometry Cylinder {
+                      height 0.02
+                      radius 0.049999999999999996
+                      subdivision 20
+                    }
+                  }
+                ]
+              }
+            ]
+            boundingObject Transform {
+              translation 0 0 0.02
+              rotation 1 0 0 1.5708
+              children [
+                DEF wheel1 Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.8 0.8 0.8
+                    transparency 0.12999999523162842
+                    roughness 1
+                    metalness 0
+                    emissiveColor 0 1 0
+                  }
+                  geometry Cylinder {
+                    height 0.02
+                    radius 0.05
+                  }
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+      ]
+      name "wheel 1"
+      boundingObject DEF DUMMY Sphere {
+        radius 0.01
+      }
+      physics Physics {
+      }
+    }
+    DEF SOLID2 Solid {
+      rotation 0 1 0 2.09
+      children [
+        DEF WHEEL2 HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor 0 0 0.1
+          }
+          device [
+            RotationalMotor {
+              name "motor2"
+              maxVelocity 52.35
+              maxTorque 0.5931
+            }
+            PositionSensor {
+              name "encoder_2"
+              resolution 0.0052359
+            }
+          ]
+          endPoint Solid {
+            translation 0 0 0.1
+            rotation 0 0 1 0.00240580999995935
+            children [
+              DEF sr1 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 146.88369599386388
+                  anchor 0 0.05 0.02
+                }
+                endPoint Solid {
+                  translation 0 0.05 0.02
+                  rotation -1 0 0 3.912751378446194
+                  children [
+                    USE r1
+                  ]
+                  name "sr1"
+                  boundingObject USE r1
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr2 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 43.804502222080664
+                  axis 0.707107 0.707107 0
+                  anchor -0.03535 0.03535 0.02
+                }
+                endPoint Solid {
+                  translation -0.03535 0.03535 0.02
+                  rotation 0.7071067811865476 0.7071067811865476 0 6.105390379003145
+                  children [
+                    USE r2
+                  ]
+                  name "sr2"
+                  boundingObject USE r2
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr3 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -142.62859954025174
+                  anchor 0 -0.05 0.02
+                }
+                endPoint Solid {
+                  translation 0 -0.05 0.02
+                  rotation -1 0 0 4.398522782300839
+                  children [
+                    USE r3
+                  ]
+                  name "sr3"
+                  boundingObject USE r3
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr4 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -411.4349864797155
+                  axis 0.707107 0.707107 0
+                  anchor 0.03535 -0.03535 0.02
+                }
+                endPoint Solid {
+                  translation 0.03535 -0.03535 0.02
+                  rotation 0.7071067811865475 0.7071067811865475 0 3.255243794137188
+                  children [
+                    USE r4
+                  ]
+                  name "sr4"
+                  boundingObject USE r4
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr5 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 170.65921780560237
+                  axis 0 1 0
+                  anchor -0.05 0 0.02
+                }
+                endPoint Solid {
+                  translation -0.05 0 0.02
+                  rotation 0 -1 0 5.269970795426055
+                  children [
+                    USE r5
+                  ]
+                  name "sr5"
+                  boundingObject USE r5
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr6 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -414.0823577996137
+                  axis 0 1 0
+                  anchor 0.05 0 0.02
+                }
+                endPoint Solid {
+                  translation 0.05 0 0.02
+                  rotation 0 1 0 0.6078724742390039
+                  children [
+                    USE r6
+                  ]
+                  name "sr6"
+                  boundingObject USE r6
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr7 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 152.7654231674806
+                  axis -0.707107 0.707107 0
+                  anchor -0.03535 -0.03535 0.02
+                }
+                endPoint Solid {
+                  translation -0.03535 -0.03535 0.02
+                  rotation -0.7071067811865476 0.7071067811865476 0 1.96897579517053
+                  children [
+                    USE r7
+                  ]
+                  name "sr7"
+                  boundingObject USE r7
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr8 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -458.9417991366042
+                  axis -0.707107 0.707107 0
+                  anchor 0.03535 0.03535 0.02
+                }
+                endPoint Solid {
+                  translation 0.03535 0.03535 0.02
+                  rotation -0.7071067811865475 0.7071067811865475 0 6.013913594685225
+                  children [
+                    USE r8
+                  ]
+                  name "sr8"
+                  boundingObject USE r8
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              USE WHEEL_TRANS
+            ]
+            boundingObject Transform {
+              translation 0 0 0.02
+              rotation 1 0 0 1.5708
+              children [
+                DEF wheel1 Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.8 0.8 0.8
+                    transparency 0.12999999523162842
+                    roughness 1
+                    metalness 0
+                    emissiveColor 0 1 0
+                  }
+                  geometry Cylinder {
+                    height 0.02
+                    radius 0.05
+                  }
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+      ]
+      name "wheel 2"
+      boundingObject USE DUMMY
+      physics Physics {
+      }
+    }
+    DEF SOLID3 Solid {
+      rotation 0 1 0 4.18
+      children [
+        DEF WHEEL3 HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 0 1
+            anchor 0 0 0.1
+          }
+          device [
+            RotationalMotor {
+              name "motor3"
+              maxVelocity 52.35
+              maxTorque 0.5931
+            }
+            PositionSensor {
+              name "encoder_3"
+              resolution 0.0052359
+            }
+          ]
+          endPoint Solid {
+            translation 0 0 0.1
+            rotation 0 0 1 0.0039094399996800495
+            children [
+              DEF sr1 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -471.20103288430334
+                  anchor 0 0.05 0.02
+                }
+                endPoint Solid {
+                  translation 0 0.05 0.02
+                  rotation -1 0 0 6.245320153013943
+                  children [
+                    USE r1
+                  ]
+                  name "sr1"
+                  boundingObject USE r1
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr2 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -463.9185845925108
+                  axis 0.707107 0.707107 0
+                  anchor -0.03535 0.03535 0.02
+                }
+                endPoint Solid {
+                  translation -0.03535 0.03535 0.02
+                  rotation 0.7071067811865475 0.7071067811865475 0 1.0371281387786024
+                  children [
+                    USE r2
+                  ]
+                  name "sr2"
+                  boundingObject USE r2
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr3 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 203.73993385466568
+                  anchor 0 -0.05 0.02
+                }
+                endPoint Solid {
+                  translation 0 -0.05 0.02
+                  rotation 0.9999999999999999 0 0 2.678004024918912
+                  children [
+                    USE r3
+                  ]
+                  name "sr3"
+                  boundingObject USE r3
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr4 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 158.74983903599642
+                  axis 0.707107 0.707107 0
+                  anchor 0.03535 -0.03535 0.02
+                }
+                endPoint Solid {
+                  translation 0.03535 -0.03535 0.02
+                  rotation -0.7071067811865475 -0.7071067811865475 0 4.612978950672832
+                  children [
+                    USE r4
+                  ]
+                  name "sr4"
+                  boundingObject USE r4
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr5 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -377.0300988701739
+                  axis 0 1 0
+                  anchor -0.05 0 0.02
+                }
+                endPoint Solid {
+                  translation -0.05 0 0.02
+                  rotation 0 -1 0 0.0389804393987168
+                  children [
+                    USE r5
+                  ]
+                  name "sr5"
+                  boundingObject USE r5
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr6 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 148.38941685632435
+                  axis 0 1 0
+                  anchor 0.05 0 0.02
+                }
+                endPoint Solid {
+                  translation 0.05 0 0.02
+                  rotation 0 -1 0 2.40703051598573
+                  children [
+                    USE r6
+                  ]
+                  name "sr6"
+                  boundingObject USE r6
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr7 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position -1579.2886627248733
+                  axis -0.707107 0.707107 0
+                  anchor -0.03535 -0.03535 0.02
+                }
+                endPoint Solid {
+                  translation -0.03535 -0.03535 0.02
+                  rotation -0.7071067811865475 0.7071067811865475 0 4.074034684382445
+                  children [
+                    USE r7
+                  ]
+                  name "sr7"
+                  boundingObject USE r7
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              DEF sr8 HingeJoint {
+                jointParameters HingeJointParameters {
+                  position 120.46200297188031
+                  axis -0.707107 0.707107 0
+                  anchor 0.03535 0.03535 0.02
+                }
+                endPoint Solid {
+                  translation 0.03535 0.03535 0.02
+                  rotation 0.7071067811865476 -0.7071067811865476 0 5.20170317171142
+                  children [
+                    USE r8
+                  ]
+                  name "sr8"
+                  boundingObject USE r8
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                  }
+                }
+              }
+              USE WHEEL_TRANS
+            ]
+            boundingObject Transform {
+              translation 0 0 0.02
+              rotation 1 0 0 1.5708
+              children [
+                DEF wheel1 Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.8 0.8 0.8
+                    transparency 0.12999999523162842
+                    roughness 1
+                    metalness 0
+                    emissiveColor 0 1 0
+                  }
+                  geometry Cylinder {
+                    height 0.02
+                    radius 0.05
+                  }
+                }
+              ]
+            }
+            physics Physics {
+            }
+          }
+        }
+      ]
+      name "wheel 3"
+      boundingObject USE DUMMY
+      physics Physics {
+      }
+    }
+    DEF BODY_TRANS Transform {
+      translation 0 0.03 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5647058823529412 0.9333333333333333 0.5647058823529412
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.15
+            radius 0.1
+            subdivision 18
+          }
+        }
+      ]
+    }
+    DistanceSensor {
+      translation 0.07 0.05 0.07
+      rotation 0 1 0 -0.0872
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.6431372549019608 0 0
+          }
+          geometry Box {
+            size 0.02 0.01 0.01
+          }
+        }
+      ]
+      name "distance_sensor1"
+      lookupTable [
+        0.02 0 0
+        5 1659 0
+      ]
+    }
+    DistanceSensor {
+      translation 0.1 0.05 0.02
+      rotation 0 1 0 0.0872
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.6431372549019608 0 0
+          }
+          geometry Box {
+            size 0.02 0.01 0.01
+          }
+        }
+      ]
+      name "distance_sensor2"
+      lookupTable [
+        0.02 0 0
+        5 1659 0
+      ]
+    }
+  ]
+  boundingObject USE BODY_TRANS
+  physics Physics {
+  }
+  controller "u3_exam_Chacon_Ivan"
+}
+Solid {
+  translation 0 0.3 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+      }
+      geometry DEF G_OBSTACLE Box {
+        size 0.19999999999999998 0.6 0.1
+      }
+    }
+  ]
+  boundingObject USE G_OBSTACLE
+  physics Physics {
+  }
+}
