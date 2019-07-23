@@ -23,6 +23,18 @@
 #define PI 3.1416
 #define OBSTACLE_DISTANCE 400.0
 
+static void print_keyboard_help() {
+  printf(" 'Up Arrow' key to move forward linearly at 0.3 m/s\n");
+  printf(" 'Down Arrow' key to move backward linearly at 0.3 m/s\n");
+  printf(" 'Left Arrow' key to move linearly to the left at 0.3 m/s\n");
+  printf(" 'Right Arrow' key to move linearly to the right at 0.3 m/s\n");
+  printf(" 'A' key to turn the robot left at 45 degrees/s\n");
+  printf(" 'S' key to turn the robot right at 45 degrees/s\n");
+  printf(" 'G' key to start Autonomous Mode for the robot\n");
+  printf(" 'W' key to start Manual Mode\n");
+
+}
+
 
 
 
@@ -37,23 +49,22 @@ int main(int argc, char **argv)
   /* necessary to initialize webots stuff */
   wb_robot_init();
   wb_keyboard_enable(TIME_STEP);
+  print_keyboard_help();
 
   int pressed_key;
 
-  //
-
-   float distance_left = 0;
-   float distance_right = 0;
-   float Encoder1 = 0;
+  float distance_left = 0;
+  float distance_right = 0;
+  float Encoder1 = 0;
    //float Encoder2 = 0;
    //float Encoder3 = 0;
-   float Comparador = 0;
-   int turn_left = 0;
-   int turn_right = 0;
+  float Comparador = 0;
+  int turn_left = 0;
+  int turn_right = 0;
    //int turn_left2 = 0;
    //int turn_right2 = 0;
-   int n = 1;
-   int m = 0;
+  int n = 1;
+  int m = 0;
 
   // Encoder devices
  WbDeviceTag encoder1 = wb_robot_get_device("encoder_1");
@@ -80,15 +91,6 @@ int main(int argc, char **argv)
    wb_distance_sensor_enable(sensor_right, TIME_STEP);
 
 
-   printf(" 'Up Arrow' key to move forward linearly at 0.3 m/s\n");
-   printf(" 'Down Arrow' key to move backward linearly at 0.3 m/s\n");
-   printf(" 'Left Arrow' key to move linearly to the left at 0.3 m/s\n");
-   printf(" 'Right Arrow' key to move linearly to the right at 0.3 m/s\n");
-   printf(" 'A' key to turn the robot left at 45 degrees/s\n");
-   printf(" 'S' key to turn the robot right at 45 degrees/s\n");
-   printf(" 'G' key to start Autonomous Mode for the robot\n");
-   printf(" 'W' key to start Manual Mode\n");
-
 
 
 void manual(){
@@ -101,44 +103,30 @@ void manual(){
      //Encoder2 = wb_position_sensor_get_value(encoder2);
      //Encoder3 = wb_position_sensor_get_value(encoder3);
 
-     printf("distance_left: %lf\r\n", distance_left);
-     printf("distance_right: %lf\r\n", distance_right);
-     printf("Encoder1: %lf\r\n", Encoder1);
-     //printf("Encoder2: %lf\r\n", Encoder2);
-     //printf("Encoder3: %lf\r\n", Encoder3);
-     //printf("Comparador: %lf\n",Comparador );
-     // detect obsctacles
-     //bool right_obstacle = distance_right <= OBSTACLE_DISTANCE;
-    // bool left_obstacle = distance_left <= OBSTACLE_DISTANCE;
-
-
-
-
      if(pressed_key == WB_KEYBOARD_UP){
-
        wb_motor_set_velocity(wheel_left, -5);
        wb_motor_set_velocity(wheel_right, 5);
        wb_motor_set_velocity(wheel_back, 0);
      }
+
      else if(pressed_key == WB_KEYBOARD_DOWN){
        wb_motor_set_velocity(wheel_left, 5);
        wb_motor_set_velocity(wheel_right, -5);
        wb_motor_set_velocity(wheel_back, 0);
-
      }
+
      else if(pressed_key == WB_KEYBOARD_LEFT){
        wb_motor_set_velocity(wheel_left, 0);
        wb_motor_set_velocity(wheel_right, -5);
        wb_motor_set_velocity(wheel_back, 5);
-
      }
+
      else if(pressed_key == WB_KEYBOARD_RIGHT){
        wb_motor_set_velocity(wheel_left, 0);
        wb_motor_set_velocity(wheel_right, 5);
        wb_motor_set_velocity(wheel_back, -5);
-
-
      }
+
      else if(pressed_key == 'S' ){
        Comparador = Encoder1 + 0.785398; //.75 = 45 degrees to the left
        turn_left = 1;
@@ -151,35 +139,36 @@ void manual(){
        wb_motor_set_velocity(wheel_right, 5);
        wb_motor_set_velocity(wheel_back, 5);
      }
-     else{
+
+       else{
        wb_motor_set_velocity(wheel_left, 0);
        wb_motor_set_velocity(wheel_right, 0);
        wb_motor_set_velocity(wheel_back, 0);
        turn_left = 0;
-     }
+       }
 
-   }
+     }
 
      else if(pressed_key == 'A' ){
      Comparador = Encoder1 - 0.785398; // 45 degrees to the right
      turn_right = 1;
-
-     }
-      else if(turn_right == 1){
-
-       if(Encoder1 >= Comparador){
-       wb_motor_set_velocity(wheel_left, -5);
-       wb_motor_set_velocity(wheel_right, -5);
-       wb_motor_set_velocity(wheel_back, -5);
-     }
-     else{
-       wb_motor_set_velocity(wheel_left, 0);
-       wb_motor_set_velocity(wheel_right, 0);
-       wb_motor_set_velocity(wheel_back, 0);
-       turn_right = 0;
      }
 
+     else if(turn_right == 1){
+
+        if(Encoder1 >= Comparador){
+         wb_motor_set_velocity(wheel_left, -5);
+         wb_motor_set_velocity(wheel_right, -5);
+         wb_motor_set_velocity(wheel_back, -5);
+        }
+        else{
+         wb_motor_set_velocity(wheel_left, 0);
+         wb_motor_set_velocity(wheel_right, 0);
+         wb_motor_set_velocity(wheel_back, 0);
+         turn_right = 0;
+        }
      }
+
      else{
        wb_motor_set_velocity(wheel_left, 0);
        wb_motor_set_velocity(wheel_right, 0);
@@ -197,15 +186,6 @@ void automatic(){
     //Encoder2 = wb_position_sensor_get_value(encoder2);
     //Encoder3 = wb_position_sensor_get_value(encoder3);
 
-    printf("distance_left: %lf\r\n", distance_left);
-    printf("distance_right: %lf\r\n", distance_right);
-    //printf("Encoder1: %lf\r\n", Encoder1);
-    //printf("Encoder2: %lf\r\n", Encoder2);
-    //printf("Encoder3: %lf\r\n", Encoder3);
-    //printf("Comparador: %lf\n",Comparador );
-    // detect obsctacles
-    //bool right_obstacle = distance_right <= OBSTACLE_DISTANCE;
-    // bool left_obstacle = distance_left <= OBSTACLE_DISTANCE;
 
     wb_motor_set_velocity(wheel_left, -6.66);
     wb_motor_set_velocity(wheel_right, 6.66);
@@ -216,14 +196,13 @@ void automatic(){
     wb_motor_set_velocity(wheel_left, -6.66);
     wb_motor_set_velocity(wheel_right, -6.66);
     wb_motor_set_velocity(wheel_back, -6.66);
-
    }
-   else if(distance_left > distance_right && distance_right < OBSTACLE_DISTANCE){
 
+   else if(distance_left > distance_right && distance_right < OBSTACLE_DISTANCE){
     wb_motor_set_velocity(wheel_left, 6.66);
     wb_motor_set_velocity(wheel_right, 6.66);
     wb_motor_set_velocity(wheel_back, 6.66);
-  }
+   }
 
 }
 
@@ -234,18 +213,12 @@ void automatic(){
 
 
 
-  while (wb_robot_step(TIME_STEP) != -1) {
+while (wb_robot_step(TIME_STEP) != -1) {
 
-
-
-    /*
-     * Read the sensors :
-     * Enter here functions to read sensor data, like:
-     *  double val = wb_distance_sensor_get_value(my_sensor);
-     */
 
     /* Process sensor data here */
   pressed_key = wb_keyboard_get_key();
+
 
   if(pressed_key == 'W'){
     m = 1;
@@ -258,22 +231,23 @@ void automatic(){
     n = 1;
     m = 0;
    printf("Automatic mode \n");
-
   }
 
   if(m == 1){
   manual();
-}
+  }
+
   if(n == 1){
   automatic();
   }
 
-  };
+};
 
   /* Enter your cleanup code here */
 
   /* This is necessary to cleanup webots resources */
   wb_robot_cleanup();
+
 
   return 0;
 }
