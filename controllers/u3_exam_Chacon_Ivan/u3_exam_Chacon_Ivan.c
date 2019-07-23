@@ -52,23 +52,18 @@ int main(int argc, char **argv)
   print_keyboard_help();
 
   int pressed_key;
-
   float distance_left = 0;
   float distance_right = 0;
   float Encoder1 = 0;
-   //float Encoder2 = 0;
-   //float Encoder3 = 0;
   float Comparador = 0;
   int turn_left = 0;
   int turn_right = 0;
-   //int turn_left2 = 0;
-   //int turn_right2 = 0;
   int n = 1;
   int m = 0;
 
   // Encoder devices
- WbDeviceTag encoder1 = wb_robot_get_device("encoder_1");
- wb_position_sensor_enable(encoder1, TIME_STEP);
+  WbDeviceTag encoder1 = wb_robot_get_device("encoder_1");
+  wb_position_sensor_enable(encoder1, TIME_STEP);
  //WbDeviceTag encoder2 = wb_robot_get_device("encoder_2");
  //wb_position_sensor_enable(encoder2, TIME_STEP);
  //WbDeviceTag encoder3 = wb_robot_get_device("encoder_3");
@@ -89,7 +84,6 @@ int main(int argc, char **argv)
    WbDeviceTag sensor_right = wb_robot_get_device("distance_sensor2");
    wb_distance_sensor_enable(sensor_left, TIME_STEP);
    wb_distance_sensor_enable(sensor_right, TIME_STEP);
-
 
 
 
@@ -134,18 +128,18 @@ void manual(){
 
      else if(turn_left == 1){
 
-       if(Encoder1 <= Comparador){
-       wb_motor_set_velocity(wheel_left, 5);
-       wb_motor_set_velocity(wheel_right, 5);
-       wb_motor_set_velocity(wheel_back, 5);
-     }
+        if(Encoder1 <= Comparador){
+          wb_motor_set_velocity(wheel_left, 5);
+          wb_motor_set_velocity(wheel_right, 5);
+          wb_motor_set_velocity(wheel_back, 5);
+        }
 
-       else{
-       wb_motor_set_velocity(wheel_left, 0);
-       wb_motor_set_velocity(wheel_right, 0);
-       wb_motor_set_velocity(wheel_back, 0);
-       turn_left = 0;
-       }
+        else{
+          wb_motor_set_velocity(wheel_left, 0);
+          wb_motor_set_velocity(wheel_right, 0);
+          wb_motor_set_velocity(wheel_back, 0);
+          turn_left = 0;
+        }
 
      }
 
@@ -157,16 +151,17 @@ void manual(){
      else if(turn_right == 1){
 
         if(Encoder1 >= Comparador){
-         wb_motor_set_velocity(wheel_left, -5);
-         wb_motor_set_velocity(wheel_right, -5);
-         wb_motor_set_velocity(wheel_back, -5);
+          wb_motor_set_velocity(wheel_left, -5);
+          wb_motor_set_velocity(wheel_right, -5);
+          wb_motor_set_velocity(wheel_back, -5);
         }
+
         else{
-         wb_motor_set_velocity(wheel_left, 0);
-         wb_motor_set_velocity(wheel_right, 0);
-         wb_motor_set_velocity(wheel_back, 0);
-         turn_right = 0;
-        }
+          wb_motor_set_velocity(wheel_left, 0);
+          wb_motor_set_velocity(wheel_right, 0);
+          wb_motor_set_velocity(wheel_back, 0);
+          turn_right = 0;
+         }
      }
 
      else{
@@ -174,35 +169,34 @@ void manual(){
        wb_motor_set_velocity(wheel_right, 0);
        wb_motor_set_velocity(wheel_back, 0);
      }
-   }
+}
 
 void automatic(){
 
           //Distance Read
-    distance_left = wb_distance_sensor_get_value(sensor_left);
-    distance_right = wb_distance_sensor_get_value(sensor_right);
-
-    Encoder1 = wb_position_sensor_get_value(encoder1);
+   distance_left = wb_distance_sensor_get_value(sensor_left);
+   distance_right = wb_distance_sensor_get_value(sensor_right);
+   Encoder1 = wb_position_sensor_get_value(encoder1);
     //Encoder2 = wb_position_sensor_get_value(encoder2);
     //Encoder3 = wb_position_sensor_get_value(encoder3);
 
 
-    wb_motor_set_velocity(wheel_left, -6.66);
-    wb_motor_set_velocity(wheel_right, 6.66);
-    wb_motor_set_velocity(wheel_back, 0);
+   wb_motor_set_velocity(wheel_left, -6.66);
+   wb_motor_set_velocity(wheel_right, 6.66);
+   wb_motor_set_velocity(wheel_back, 0);
 
-   if(distance_left < distance_right && distance_left < OBSTACLE_DISTANCE){
+    if(distance_left < distance_right && distance_left < OBSTACLE_DISTANCE){
 
-    wb_motor_set_velocity(wheel_left, -6.66);
-    wb_motor_set_velocity(wheel_right, -6.66);
-    wb_motor_set_velocity(wheel_back, -6.66);
-   }
+      wb_motor_set_velocity(wheel_left, -6.66);
+      wb_motor_set_velocity(wheel_right, -6.66);
+      wb_motor_set_velocity(wheel_back, -6.66);
+    }
 
-   else if(distance_left > distance_right && distance_right < OBSTACLE_DISTANCE){
-    wb_motor_set_velocity(wheel_left, 6.66);
-    wb_motor_set_velocity(wheel_right, 6.66);
-    wb_motor_set_velocity(wheel_back, 6.66);
-   }
+    else if(distance_left > distance_right && distance_right < OBSTACLE_DISTANCE){
+      wb_motor_set_velocity(wheel_left, 6.66);
+      wb_motor_set_velocity(wheel_right, 6.66);
+      wb_motor_set_velocity(wheel_back, 6.66);
+    }
 
 }
 
