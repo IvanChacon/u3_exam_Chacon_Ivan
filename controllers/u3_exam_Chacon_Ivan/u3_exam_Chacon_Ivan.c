@@ -61,29 +61,29 @@ int main(int argc, char **argv)
   int n = 1;
   int m = 0;
 
-  // Encoder devices
+   // Encoder devices
   WbDeviceTag encoder1 = wb_robot_get_device("encoder_1");
   wb_position_sensor_enable(encoder1, TIME_STEP);
- //WbDeviceTag encoder2 = wb_robot_get_device("encoder_2");
- //wb_position_sensor_enable(encoder2, TIME_STEP);
- //WbDeviceTag encoder3 = wb_robot_get_device("encoder_3");
- //wb_position_sensor_enable(encoder3, TIME_STEP);
+  //WbDeviceTag encoder2 = wb_robot_get_device("encoder_2");
+  //wb_position_sensor_enable(encoder2, TIME_STEP);
+  //WbDeviceTag encoder3 = wb_robot_get_device("encoder_3");
+  //wb_position_sensor_enable(encoder3, TIME_STEP);
 
 
   //
-   WbDeviceTag wheel_left = wb_robot_get_device("motor1");
-   WbDeviceTag wheel_right = wb_robot_get_device("motor2");
-   WbDeviceTag wheel_back = wb_robot_get_device("motor3");
+  WbDeviceTag wheel_left = wb_robot_get_device("motor1");
+  WbDeviceTag wheel_right = wb_robot_get_device("motor2");
+  WbDeviceTag wheel_back = wb_robot_get_device("motor3");
 
-   wb_motor_set_position(wheel_left, INFINITY);
-   wb_motor_set_position(wheel_right, INFINITY);
-   wb_motor_set_position(wheel_back, INFINITY);
+  wb_motor_set_position(wheel_left, INFINITY);
+  wb_motor_set_position(wheel_right, INFINITY);
+  wb_motor_set_position(wheel_back, INFINITY);
 
    //Distance sensor
-   WbDeviceTag sensor_left = wb_robot_get_device("distance_sensor1");
-   WbDeviceTag sensor_right = wb_robot_get_device("distance_sensor2");
-   wb_distance_sensor_enable(sensor_left, TIME_STEP);
-   wb_distance_sensor_enable(sensor_right, TIME_STEP);
+  WbDeviceTag sensor_left = wb_robot_get_device("distance_sensor1");
+  WbDeviceTag sensor_right = wb_robot_get_device("distance_sensor2");
+  wb_distance_sensor_enable(sensor_left, TIME_STEP);
+  wb_distance_sensor_enable(sensor_right, TIME_STEP);
 
 
 
